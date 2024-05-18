@@ -1,0 +1,8 @@
+###NAMESPACE
+http://example.org/bridge#
+###CLASS
+InfoRelevant
+InfoRelevant#Component
+BridgeRelevant
+###PROPERTIES
+Component#equalsTo#Component

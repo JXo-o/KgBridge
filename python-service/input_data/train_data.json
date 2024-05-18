@@ -1,0 +1,137 @@
+[
+    {
+        "text": "泄水孔的直径不小于5.0厘米。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 9, "label": "OPERATOR"},
+            {"start": 9, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "钢梁的长度不小于20.0米。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 12, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "桥墩的高度至少为5.0米。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 7, "label": "OPERATOR"},
+            {"start": 8, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "桥面的宽度不超过10.0米。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 12, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "桥梁的设计荷载为200吨。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 7, "label": "PROPERTY"},
+            {"start": 7, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "墙体的防火等级等于A级。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 7, "label": "PROPERTY"},
+            {"start": 7, "end": 9, "label": "OPERATOR"},
+            {"start": 9, "end": 10, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "水龙头的流量等于5.0升每分钟。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "钓鱼竿的长度不少于2.2米。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 9, "label": "OPERATOR"},
+            {"start": 9, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "电灯泡的亮度不低于800.0流明。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 9, "label": "OPERATOR"},
+            {"start": 9, "end": 14, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "汽车的速度不超过120公里每小时。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "笔记本的内存容量等于8.0GB。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 8, "label": "PROPERTY"},
+            {"start": 8, "end": 10, "label": "OPERATOR"},
+            {"start": 11, "end": 14, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "房子的面积大于100平方米。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 7, "label": "OPERATOR"},
+            {"start": 7, "end": 10, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "后花园的面积不大于200.0平方米。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 9, "label": "OPERATOR"},
+            {"start": 9, "end": 14, "label": "VALUE"}
+        ]
+    },
+        {
+        "text": "篮球场的长度为28.8米。",
+        "entities": [
+            {"start": 0, "end": 3, "label": "ENTITY"},
+            {"start": 4, "end": 6, "label": "PROPERTY"},
+            {"start": 6, "end": 7, "label": "OPERATOR"},
+            {"start": 7, "end": 11, "label": "VALUE"}
+        ]
+    },
+    {
+        "text": "书架的高度不超过2.0米。",
+        "entities": [
+            {"start": 0, "end": 2, "label": "ENTITY"},
+            {"start": 3, "end": 5, "label": "PROPERTY"},
+            {"start": 5, "end": 8, "label": "OPERATOR"},
+            {"start": 8, "end": 9, "label": "VALUE"}
+        ]
+    }
+]

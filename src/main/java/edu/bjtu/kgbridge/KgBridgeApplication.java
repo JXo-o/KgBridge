@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JenaBridgeOntologyApplication {
+public class KgBridgeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JenaBridgeOntologyApplication.class, args);
+        SpringApplication.run(KgBridgeApplication.class, args);
     }
 
 }
