@@ -10,14 +10,15 @@ import os
 class KnowledgeGraphCompleter:
 
     def __init__(self, ifc_path, kg_path, kg_format="xml"):
+        self.base_path = os.path.join(os.getcwd(), "python-service")
         self.mapping = ConvertToRule.read_mapping_from_file()
         self.ontology = Ontology()
         self.ontology.parse_ontology(
             kg_path,
             kg_format,
-            MyUtil.parse_ontology(os.path.join("input_data", "bridge_ontology"), "NAMESPACE")[0]
+            MyUtil.parse_ontology(os.path.join(self.base_path, "input_data", "bridge_ontology"), "NAMESPACE")[0]
         )
-        self.label_content = MyUtil.read_file(os.path.join("input_data", "ner_label"))
+        self.label_content = MyUtil.read_file(os.path.join(self.base_path, "input_data", "ner_label"))
         self.ifc_parser = IFCParser(ifc_path)
         self._init()
 

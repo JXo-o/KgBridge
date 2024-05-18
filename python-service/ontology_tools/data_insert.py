@@ -7,9 +7,18 @@ import os
 class DataInsert:
     def __init__(self):
 
-        self.g = Graph().parse(source=os.path.join("ontology_files", "standard_ontology.ontology_files"), format="xml")
-        self.ns = Namespace(MyUtil.parse_ontology(os.path.join("input_data", "standard_ontology"), "NAMESPACE")[0])
-        self.output_path = os.path.join("ontology_files", "standard.ontology_files")
+        self.base_path = os.path.join(os.getcwd(), "python-service")
+        name = MyUtil.parse_ontology(
+            os.path.join(self.base_path, "input_data", "standard_ontology"),
+            "NAMESPACE"
+        )[0]
+
+        self.g = Graph().parse(
+            source=os.path.join(self.base_path, "ontology_files", "standard_ontology.owl"),
+            format="xml"
+        )
+        self.ns = Namespace(name)
+        self.output_path = os.path.join(self.base_path, "ontology_files", "standard.owl")
         self.output_format = "xml"
 
     # 插入不同类实例

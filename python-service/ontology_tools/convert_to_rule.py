@@ -82,7 +82,7 @@ class ConvertToRule:
                 file.write(f"{key}:{value}\n")
 
     @staticmethod
-    def read_mapping_from_file(filename=os.path.join("input_data", "jena_mapping")):
+    def read_mapping_from_file(filename=os.path.join(os.getcwd(), "python-service", "input_data", "jena_mapping")):
         mapping = {}
         with open(filename, 'r', encoding='utf-8') as file:
             lines = file.readlines()
@@ -92,7 +92,7 @@ class ConvertToRule:
         return mapping
 
     @staticmethod
-    def save_rules(rules, output_path=os.path.join("input_data", "jena_output")):
+    def save_rules(rules, output_path=os.path.join(os.getcwd(), "python-service", "input_data", "jena_output")):
         with open(output_path, 'w', encoding='utf-8') as file:
             for rule in rules:
                 file.write(str(rule) + '\n')

@@ -20,21 +20,24 @@ def main(ifc_file_path):
     #     )
     # )
 
-    label_list = MyUtil.read_file(os.path.join("input_data", "ner_label"))
+    current_directory = os.getcwd()
+    label_list = MyUtil.read_file(
+        os.path.join(current_directory, "python-service", "input_data", "ner_label")
+    )
     label_list = [
         label.split() for label in label_list
     ]
 
     # 标准规范本体生成，示例
     StandardOntology(
-        os.path.join("input_data", "standard_ontology"),
-        os.path.join("ontology_files", "standard_ontology.ontology_files")
+        os.path.join(current_directory, "python-service", "input_data", "standard_ontology"),
+        os.path.join(current_directory, "python-service", "ontology_files", "standard_ontology.owl")
     ).build_logic()
 
     # 桥梁本体生成，示例
     BridgeBuilder(
-        os.path.join("input_data", "bridge_ontology"),
-        os.path.join("ontology_files", "bridge_ontology.ontology_files")
+        os.path.join(current_directory, "python-service", "input_data", "bridge_ontology"),
+        os.path.join(current_directory, "python-service", "ontology_files", "bridge_ontology.owl")
     ).build_logic()
 
     # 知识图谱数据插入，示例
@@ -45,8 +48,8 @@ def main(ifc_file_path):
 
     # 本体与数据融合部分，示例
     # kg = Ontology.merge_kg(
-    #     os.path.join("ontology_files", "standard_ontology.ontology_files"),
-    #     os.path.join("ontology_files", "standard_data.ontology_files"),
+    #     os.path.join("ontology_files", "standard_ontology.owl"),
+    #     os.path.join("ontology_files", "standard_data.owl"),
     #     namespace=Namespace(
     #         MyUtil.parse_ontology(
     #             os.path.join("input_data", "standard_ontology"),
@@ -54,21 +57,23 @@ def main(ifc_file_path):
     #         )[0]
     #     )
     # )
-    # Ontology.serialise(kg, os.path.join("ontology_files", "standard_final.ontology_files"), "xml")
+    # Ontology.serialise(kg, os.path.join("ontology_files", "standard_final.owl"), "xml")
 
     # 解析IFC，在桥梁图谱中添加数据
     KnowledgeGraphCompleter(
         ifc_file_path,
-        os.path.join("ontology_files", "bridge_ontology.ontology_files")
+        os.path.join(current_directory, "python-service", "ontology_files", "bridge_ontology.owl")
     ).data_insert().save_file(
-        os.path.join("ontology_files", "bridge.ontology_files"),
+        os.path.join(current_directory, "python-service", "ontology_files", "bridge.owl"),
         "xml"
     )
 
     # 知识图谱转Jena规则
     ConvertToRule.convert(
-        os.path.join("ontology_files", "standard.ontology_files")
+        os.path.join(current_directory, "python-service", "ontology_files", "standard.owl")
     )
+
+    print("#####SUCCESSFUL#####")
 
 
 if __name__ == "__main__":

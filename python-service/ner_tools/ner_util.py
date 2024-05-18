@@ -7,8 +7,9 @@ class NERUtil:
     def __init__(self):
         self.nlp = None
         self.doc = None
+        self.base_path = os.path.join(os.getcwd(), "python-service")
 
-    def train_model(self, data_path=os.path.join("input_data", "train_data.json"),
+    def train_model(self, data_path=os.path.join(os.getcwd(), "python-service", "input_data", "train_data.json"),
                     model_path=os.path.join("ifc_models", "model_1")):
         if not os.path.exists(model_path):
             trainer = NERTrainer(data_path, model_path)
