@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 @Api(value = "FileController", tags = {"IFC文件操作接口"})
 public class FileController {
 
-    private static final String UPLOAD_DIR = System.getProperty("user.dir") + File.separator + "model";
+    private static final String UPLOAD_DIR = System.getProperty("user.dir") + File.separator + "python-service" + File.separator + "ifc_models";
 
     /**
      * 上传ifc模型文件到服务器，方便后续处理
