@@ -52,6 +52,8 @@ public class CompareMul extends BaseBuiltin {
                     case "le" -> xValue <= result;
                     case "gt" -> xValue > result;
                     case "lt" -> xValue < result;
+                    case "eq" -> xValue == result;
+                    case "ne" -> xValue != result;
                     default -> throw new IllegalArgumentException("Invalid operator: " + operator);
                 };
             } catch (NumberFormatException e) {

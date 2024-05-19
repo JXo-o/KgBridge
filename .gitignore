@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore __pycache__ directories
+__pycache__/
+
+# Ignore all .ifc files
+*.ifc
+
+# Ignore all .owl files
+*.owl
