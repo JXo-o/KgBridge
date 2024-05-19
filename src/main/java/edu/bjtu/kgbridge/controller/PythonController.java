@@ -52,7 +52,8 @@ public class PythonController {
     @Operation(summary = "运行Python脚本", description = "运行指定IFC模型文件的Python脚本")
     @PostMapping("/run")
     public Result<String> runPythonScript(
-            @Parameter(description = "IFC模型文件名称", required = true) @RequestParam("fileName") String fileName) {
+            @Parameter(description = "IFC模型文件名称", required = true) @RequestParam("fileName") String fileName
+    ) {
         Path filePath = IFC_DIR.resolve(fileName);
         String output = PythonCaller.callPythonScript(SCRIPT_PATH.toString(), filePath.toString());
 

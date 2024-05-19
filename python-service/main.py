@@ -20,24 +20,24 @@ def main(ifc_file_path):
     #     )
     # )
 
-    current_directory = os.getcwd()
+    current_directory = os.path.join(os.getcwd(), "python-service")
     label_list = MyUtil.read_file(
-        os.path.join(current_directory, "python-service", "input_data", "ner_label")
+        os.path.join(current_directory, "input_data", "ner_label")
     )
     label_list = [
         label.split() for label in label_list
     ]
 
     # 标准规范本体生成，示例
-    StandardOntology(
-        os.path.join(current_directory, "python-service", "input_data", "standard_ontology"),
-        os.path.join(current_directory, "python-service", "ontology_files", "standard_ontology.owl")
-    ).build_logic()
+    # StandardOntology(
+    #     os.path.join(current_directory, "input_data", "standard_ontology"),
+    #     os.path.join(current_directory, "ontology_files", "standard_ontology.owl")
+    # ).build_logic()
 
     # 桥梁本体生成，示例
     BridgeBuilder(
-        os.path.join(current_directory, "python-service", "input_data", "bridge_ontology"),
-        os.path.join(current_directory, "python-service", "ontology_files", "bridge_ontology.owl")
+        os.path.join(current_directory, "input_data", "bridge_ontology"),
+        os.path.join(current_directory, "ontology_files", "bridge_ontology.owl")
     ).build_logic()
 
     # 知识图谱数据插入，示例
@@ -62,15 +62,15 @@ def main(ifc_file_path):
     # 解析IFC，在桥梁图谱中添加数据
     KnowledgeGraphCompleter(
         ifc_file_path,
-        os.path.join(current_directory, "python-service", "ontology_files", "bridge_ontology.owl")
+        os.path.join(current_directory, "ontology_files", "bridge_ontology.owl")
     ).data_insert().save_file(
-        os.path.join(current_directory, "python-service", "ontology_files", "bridge.owl"),
+        os.path.join(current_directory, "ontology_files", "bridge.owl"),
         "xml"
     )
 
     # 知识图谱转Jena规则
     ConvertToRule.convert(
-        os.path.join(current_directory, "python-service", "ontology_files", "standard.owl")
+        os.path.join(current_directory, "ontology_files", "standard.owl")
     )
 
     print("#####SUCCESSFUL#####")

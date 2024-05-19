@@ -28,8 +28,8 @@ class KnowledgeGraphCompleter:
             ifc_name = self.mapping.get(parts[0])
             if len(parts) >= 2 and ifc_name:
                 self.ontology.add_triple(parts[0], RDF.type, "Component")
-                self.ontology.add_triple(ifc_name, RDF.type, "Component")
-                self.ontology.add_triple(parts[0], "equalsTo", ifc_name)
+                self.ontology.add_triple(ifc_name.split("#")[0], RDF.type, "Component")
+                self.ontology.add_triple(parts[0], "equalsTo", ifc_name.split("#")[0])
 
     def data_insert(self):
         # ConvertToRule.get_instances(self.ontology_tools.get_kg(), self.ontology_tools.get_ns().Component)
@@ -46,7 +46,6 @@ class KnowledgeGraphCompleter:
             for res in r_list:
                 key, value = res.strip().split("#")
                 self.ontology.add_triple(key, RDF.type, zh_name)
-                print(Literal(value))
                 self.ontology.add_triple(key, parts[1], Literal(value))
 
         return self.ontology

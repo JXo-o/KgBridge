@@ -80,4 +80,4 @@ class BridgeBuilder:
         ontology_builder.build_ontology()
         Ontology.serialise(ontology_builder.get_kg(), self.output_path, self.output_format)
 
-        print("桥梁本体已存至" + str(self.output_path))
+        # print("桥梁本体已存至" + str(self.output_path))

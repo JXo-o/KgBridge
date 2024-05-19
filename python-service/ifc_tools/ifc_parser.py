@@ -96,7 +96,6 @@ class IFCParser:
             elif dimension_key.startswith("property:"):
                 property_name = dimension_key.split(":", 1)[1]
                 dimension_value = self._calculate_property_value(element, property_name)
-                print(dimension_value)
             else:
                 raise ValueError(f"Unsupported dimension key: {dimension_key}")
 

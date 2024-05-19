@@ -24,4 +24,4 @@ class StandardOntology:
 
         Ontology.serialise(ontology_builder.get_kg(), self.output_path, self.output_format)
 
-        print("标准规范本体已存至" + str(self.output_path))
+        # print("标准规范本体已存至" + str(self.output_path))

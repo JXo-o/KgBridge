@@ -80,7 +80,7 @@ class Ontology:
         clazz = MyUtil.parse_ontology(self.input_path, "CLASS")
         properties = MyUtil.parse_ontology(self.input_path, "PROPERTIES")
         self.set_namespace(ns[0])
-        print(Namespace(self.g.store.namespace("")))
+        # print(Namespace(self.g.store.namespace("")))
 
         for c in clazz:
             c_lst = c.split("#")[::-1]

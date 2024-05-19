@@ -1,0 +1,15 @@
+不小于:ge
+不大于:le
+小于:lt
+大于:gt
+等于:eq
+不等于:ne
+栏杆:IfcRailing
+顶帽:IfcBuildingElementProxy#TopCap
+高度:height
+厚度:height
+长度:length
+宽度:width
+直径:diameter
+强度:strength
+strength:FirstType

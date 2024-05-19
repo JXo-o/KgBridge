@@ -1,6 +1,8 @@
 from rdflib import Graph, Namespace, Literal, URIRef
 from rdflib.namespace import FOAF, OWL, RDF, RDFS, XSD
 from utility_scripts.util import MyUtil
+import random
+import string
 import os
 
 
@@ -62,19 +64,27 @@ class DataInsert:
 
     # 以列表形式插入数据
     def insert_data(self, label):
-        print(label)
+        # print(label)
+        num_constraint = self.add_random_id(label[2])
         self._insert_instance(self.ns.Component, label[0])
         self._insert_instance(self.ns.Property, label[1])
-        self._insert_instance(self.ns.NumericalConstraint, label[2], label[3])
+        self._insert_instance(self.ns.NumericalConstraint, num_constraint, label[3])
         self._insert_property(label[0], label[1], self.ns.hasProperty)
         self._insert_property(label[1], label[0], self.ns.btoComponent)
-        self._insert_property(label[1], label[2], self.ns.meetsNumericConstraint)
+        self._insert_property(label[1], num_constraint, self.ns.meetsNumericConstraint)
 
-    # 保存图谱abox
+    # 保存图谱数据部分
     def save_file(self):
         self.g.bind("", self.ns)
         self.g.serialize(destination=self.output_path, format=self.output_format)
-        print("标准规范图谱已存至" + str(self.output_path))
+        # print("标准规范图谱已存至" + str(self.output_path))
+
+    @staticmethod
+    def add_random_id(input_str):
+        characters = string.ascii_letters + string.digits
+        random_id = ''.join(random.choice(characters) for _ in range(4))
+        result_str = f"{input_str}-{random_id}"
+        return result_str
 
     def test(self):
         self.insert_data(["泄水孔", "直径", "不小于", "50mm"])

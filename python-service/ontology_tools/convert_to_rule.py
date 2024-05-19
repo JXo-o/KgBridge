@@ -32,9 +32,12 @@ class ConvertToRule:
 
                 for num_constraint in num_constraints:
                     num_constraint_name = ConvertToRule.get_name(num_constraint)
-                    num_operator = mapping.get(num_constraint_name)
+                    num_operator = mapping.get(num_constraint_name.split("-")[0])
                     threshold = ConvertToRule.get_threshold(kg, num_constraint)[0]
-                    rule.append(f"{num_operator}(?{p_flag} {threshold})")
+                    if ConvertToRule.is_number(threshold):
+                        rule.append(f'compareMul(?{p_flag}, "{num_operator}", "1", "{threshold}")')
+                    else:
+                        rule.append(f'{num_operator}(?{p_flag}, "{threshold}")')
                     # print(f"{num_operator}(?{p_flag} {threshold})")
 
             rule.append("->(?a :推理结果 :合格)]")
@@ -42,6 +45,14 @@ class ConvertToRule:
             # print(''.join(rule))
 
         ConvertToRule.save_rules(rules)
+
+    @staticmethod
+    def is_number(s):
+        try:
+            float(s)
+            return True
+        except ValueError:
+            return False
 
     @staticmethod
     def get_instances(kg, key):
@@ -82,7 +93,7 @@ class ConvertToRule:
                 file.write(f"{key}:{value}\n")
 
     @staticmethod
-    def read_mapping_from_file(filename=os.path.join(os.getcwd(), "python-service", "input_data", "jena_mapping")):
+    def read_mapping_from_file(filename=os.path.join(os.getcwd(), "python-service", "input_data", "mapping")):
         mapping = {}
         with open(filename, 'r', encoding='utf-8') as file:
             lines = file.readlines()
@@ -96,7 +107,7 @@ class ConvertToRule:
         with open(output_path, 'w', encoding='utf-8') as file:
             for rule in rules:
                 file.write(str(rule) + '\n')
-        print("转换后的Jena规则已存至" + str(output_path))
+        # print("转换后的Jena规则已存至" + str(output_path))
 
     @staticmethod
     def increment_char(ch_list):
