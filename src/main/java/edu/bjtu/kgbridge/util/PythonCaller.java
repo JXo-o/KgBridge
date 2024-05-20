@@ -1,5 +1,8 @@
 package edu.bjtu.kgbridge.util;
 
+import edu.bjtu.kgbridge.enums.ResultCodeEnum;
+import edu.bjtu.kgbridge.model.Result;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -36,7 +39,7 @@ public class PythonCaller {
      * @param args 参数
      * @return 执行结果
      */
-    public static String callPythonScript(String scriptPath, String... args) {
+    public static Result<String> callPythonScript(String scriptPath, String... args) {
         StringBuilder result = new StringBuilder();
         List<String> command = new ArrayList<>();
         command.add(pythonPath);
@@ -77,6 +80,11 @@ public class PythonCaller {
                 process.destroy();
             }
         }
-        return result.toString();
+
+        String output = result.toString();
+        if (output.contains("#####SUCCESSFUL#####")) {
+            return Result.success(output);
+        }
+        return Result.fail(ResultCodeEnum.SERVER_ERROR, output);
     }
 }

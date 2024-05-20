@@ -8,9 +8,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
- * ClassName: JenaInferenceController
+ * ClassName: JenaController
  * Package: edu.bjtu.kgbridge.controller
  * Description: 用于处理Jena推理操作
  *
@@ -20,12 +21,12 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/jena")
-@Tag(name = "JenaInferenceController", description = "Jena推理操作接口")
-public class JenaInferenceController {
+@Tag(name = "JenaController", description = "Jena推理操作接口")
+public class JenaController {
 
     private final JenaService jenaService;
 
-    public JenaInferenceController(JenaService jenaService) {
+    public JenaController(JenaService jenaService) {
         this.jenaService = jenaService;
     }
 
@@ -54,9 +55,9 @@ public class JenaInferenceController {
      */
     @Operation(summary = "查看Jena规则文件中的规则", description = "读取并返回Jena规则文件中的规则")
     @GetMapping("/rules")
-    public Result<String> getRules() {
+    public Result<List<String>> getRules() {
         try {
-            String rulesContent = jenaService.getRules();
+            List<String> rulesContent = jenaService.getRules();
             return Result.success(rulesContent);
         } catch (IOException e) {
             return Result.fail(ResultCodeEnum.NOT_FOUND, e.getMessage());

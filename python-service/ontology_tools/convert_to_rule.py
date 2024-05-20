@@ -45,6 +45,7 @@ class ConvertToRule:
             # print(''.join(rule))
 
         ConvertToRule.save_rules(rules)
+        print("#####SUCCESSFUL#####")
 
     @staticmethod
     def is_number(s):

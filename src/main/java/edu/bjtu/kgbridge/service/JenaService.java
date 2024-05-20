@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -94,7 +95,13 @@ public class JenaService {
      * @throws IOException 异常
      */
     private List<Rule> loadRules() throws IOException {
-        String rulesContent = getRules();
+        if (!Files.exists(RULES_PATH)) {
+            throw new IOException("Rules file not found: " + RULES_PATH);
+        }
+        String rulesContent;
+        try (var lines = Files.lines(RULES_PATH)) {
+            rulesContent = lines.collect(Collectors.joining("\n"));
+        }
         return Rule.parseRules(rulesContent);
     }
 
@@ -104,14 +111,8 @@ public class JenaService {
      * @return Jena规则文件内容
      * @throws IOException 异常
      */
-    public String getRules() throws IOException {
-        if (!Files.exists(RULES_PATH)) {
-            throw new IOException("Rules file not found: " + RULES_PATH);
-        }
-
-        try (var lines = Files.lines(RULES_PATH)) {
-            return lines.collect(Collectors.joining("\n"));
-        }
+    public List<String> getRules() throws IOException {
+        return Files.readAllLines(RULES_PATH, StandardCharsets.UTF_8);
     }
 
 }

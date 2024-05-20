@@ -102,6 +102,7 @@ class Ontology:
     def save_file(self, save_url, save_format):
         self.g.bind("", self.ns)
         self.g.serialize(destination=save_url, format=save_format)
+        print("#####SUCCESSFUL#####")
 
     @staticmethod
     def merge_kg(*paths, namespace, rformat="xml"):
@@ -120,3 +121,4 @@ class Ontology:
         res = kg.serialize(destination=save_url, format=save_format)
         if is_print:
             print(res)
+        print("#####SUCCESSFUL#####")

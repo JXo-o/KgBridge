@@ -78,6 +78,7 @@ class DataInsert:
         self.g.bind("", self.ns)
         self.g.serialize(destination=self.output_path, format=self.output_format)
         # print("标准规范图谱已存至" + str(self.output_path))
+        print("#####SUCCESSFUL#####")
 
     @staticmethod
     def add_random_id(input_str):

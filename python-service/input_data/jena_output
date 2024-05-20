@@ -1,2 +1,2 @@
-[顶帽规则:(?a rdf:type :顶帽)(?a :厚度 ?b)compareMul(?b, "ge", "1", "0.4")(?a :强度 ?c)ge(?c, "C35")->(?a :推理结果 :合格)]
 [栏杆规则:(?a rdf:type :栏杆)(?a :高度 ?b)compareMul(?b, "gt", "1", "1.1")->(?a :推理结果 :合格)]
+[顶帽规则:(?a rdf:type :顶帽)(?a :厚度 ?b)compareMul(?b, "ge", "1", "0.4")(?a :强度 ?c)ge(?c, "C35")->(?a :推理结果 :合格)]

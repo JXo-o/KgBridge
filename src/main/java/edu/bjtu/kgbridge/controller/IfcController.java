@@ -2,6 +2,7 @@ package edu.bjtu.kgbridge.controller;
 
 import edu.bjtu.kgbridge.enums.ResultCodeEnum;
 import edu.bjtu.kgbridge.model.Result;
+import edu.bjtu.kgbridge.util.FileUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,15 +32,12 @@ import java.util.stream.Stream;
 @Tag(name = "IfcController", description = "IFC文件操作接口")
 public class IfcController {
 
-    private static final Path BASE_DIR = Paths.get(System.getProperty("user.dir"), "python-service");
-    private static final Path UPLOAD_DIR = BASE_DIR.resolve("ifc_models");
+    private static final Path UPLOAD_DIR = Path.of(
+            System.getProperty("user.dir"),
+            "python-service",
+            "ifc_models"
+    );
 
-    /**
-     * 上传ifc模型文件到服务器，方便后续处理
-     *
-     * @param file ifc模型文件
-     * @return 上传结果
-     */
     @Operation(summary = "上传IFC模型文件", description = "上传IFC模型文件到服务器，文件大小限制在配置中设置")
     @PostMapping("/upload")
     public ResponseEntity<Result<String>> uploadFile(
@@ -66,28 +64,10 @@ public class IfcController {
         }
     }
 
-    /**
-     * 列出服务器当前的ifc模型文件
-     *
-     * @return 文件名列表
-     */
     @Operation(summary = "列出IFC模型文件", description = "列出服务器上已上传的所有IFC模型文件")
     @GetMapping("/list")
     public Result<List<String>> listFiles() {
-        if (!Files.exists(UPLOAD_DIR) || !Files.isDirectory(UPLOAD_DIR)) {
-            return Result.fail(ResultCodeEnum.NOT_FOUND, "Directory not found");
-        }
-
-        try (Stream<Path> paths = Files.list(UPLOAD_DIR)) {
-            List<String> fileNames = paths
-                    .filter(path -> path.toString().toLowerCase().endsWith(".ifc"))
-                    .map(Path::getFileName)
-                    .map(Path::toString)
-                    .collect(Collectors.toList());
-
-            return Result.success(fileNames);
-        } catch (IOException e) {
-            return Result.fail(ResultCodeEnum.SERVER_ERROR, "Could not list files");
-        }
+        return new FileUtil(UPLOAD_DIR).listFiles(".ifc");
     }
+
 }
