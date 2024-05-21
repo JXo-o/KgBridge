@@ -100,6 +100,7 @@ public class FileUtil {
                 "input_data",
                 "ner_label"
         );
+
         List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
 
         for (int i = 0; i < lineNumbers.size(); i++) {
@@ -122,4 +123,28 @@ public class FileUtil {
 
         Files.write(filePath, lines, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
     }
+
+    /**
+     * 将四元组字符串写入指定文件
+     *
+     * @param content 四元组字符串，中间以"#"隔开
+     * @param fileName 文件名
+     * @return 结果
+     */
+    public Result<String> writeTuplesToFile(String content, String fileName) {
+        Path filePath = baseDir.resolve(fileName);
+
+        String[] tuples = content.split("#");
+        List<String> lines = Stream.of(tuples)
+                .map(tuple -> tuple.replaceAll("[(),]", ""))
+                .collect(Collectors.toList());
+
+        try {
+            Files.write(filePath, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            return Result.success(content);
+        } catch (IOException e) {
+            return Result.fail(ResultCodeEnum.SERVER_ERROR, "Could not write to file: " + fileName);
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 from rdflib.namespace import OWL
 from ontology_tools.ontology_builder import Ontology
-import os
 
 
 class StandardOntology:
