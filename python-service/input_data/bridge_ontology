@@ -1,4 +1,4 @@
-@@@2024-05-21 10:21:59
+@@@2024-05-22 19:57:55
 ###NAMESPACE
 
 http://example.org/bridge#
@@ -8,13 +8,15 @@ http://example.org/bridge#
 InfoRelevant
 InfoRelevant#Component
 BridgeRelevant
+BridgeRelevant#顶帽
+BridgeRelevant#顶帽
+BridgeRelevant#顶帽
 BridgeRelevant#栏杆
-BridgeRelevant#顶帽
-BridgeRelevant#顶帽
 
 ###PROPERTIES
 
 Component#equalsTo#Component
-栏杆#高度
+顶帽#结构
+顶帽#强度等级
 顶帽#厚度
-顶帽#强度
+栏杆#高度

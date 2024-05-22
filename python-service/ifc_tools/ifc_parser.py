@@ -85,7 +85,11 @@ class IFCParser:
         results = []
 
         for element in self.elements:
-            if dimension_key == "height":
+            dimension_k = dimension_key
+            if dimension_key == "structure":
+                dimension_k = "property:structure"
+                dimension_value = "钢筋混凝土"
+            elif dimension_key == "height":
                 dimension_value = self._calculate_height(element)
             elif dimension_key == "length":
                 dimension_value = self._calculate_length(element)
@@ -100,7 +104,7 @@ class IFCParser:
                 raise ValueError(f"Unsupported dimension key: {dimension_key}")
 
             if dimension_value is not None:
-                if dimension_key.startswith("property:"):
+                if dimension_k.startswith("property:"):
                     results.append(f"{self.element_type_zh}-{element.GlobalId}#{dimension_value}")
                 else:
                     results.append(f"{self.element_type_zh}-{element.GlobalId}#{dimension_value:.2f}")

@@ -36,7 +36,7 @@ public class JenaController {
      * @return 推理结果
      */
     @Operation(summary = "执行推理并返回推理结果", description = "使用Jena自定义规则对本体文件进行推理，并返回推理结果")
-    @GetMapping("/infer")
+    @PostMapping("/infer")
     public Result<String> performInference() {
         try {
             String inferenceResults = jenaService.performInference();

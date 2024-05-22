@@ -10,7 +10,7 @@ import org.apache.jena.reasoner.rulesys.builtins.BaseBuiltin;
  * Description: compareMul通用原语
  * 举例：compareMul(?a, ge, 15. ?c)
  * 解释：判断?a是否大于等于15倍的?c
- * 注：第二个位置可为：ge、le、gt、lt
+ * 注：第二个位置可为：ge、le、gt、lt、eq、ne
  *
  * @author JX
  * @version 1.0

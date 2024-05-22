@@ -65,7 +65,8 @@ class DataInsert:
     # 以列表形式插入数据
     def insert_data(self, label):
         # print(label)
-        num_constraint = self.add_random_id(label[2])
+        # num_constraint = self.add_random_id(label[2])
+        num_constraint = f"{label[2]}-{label[3]}"
         self._insert_instance(self.ns.Component, label[0])
         self._insert_instance(self.ns.Property, label[1])
         self._insert_instance(self.ns.NumericalConstraint, num_constraint, label[3])
